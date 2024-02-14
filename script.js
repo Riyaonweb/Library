@@ -10,7 +10,7 @@ function newBook() {
     const container = document.getElementById("container");
     newbtn.addEventListener("click", () => {
         console.log("click triggered");
-        container.classList.toggle("active");
+        container.classList.toggle("active")
     })
 }
 newBook();
@@ -36,14 +36,14 @@ let c = checkValue;
 let result="";
         console.log("addbtn triggered");
         if(c.checked == true){
- result = "read";
+ result = "Read";
         }else{
-            result="not read";
+            result="Not Read";
         }
         console.log(t, a, p, result);
         addBookToLibrary(t, a, p, result);
-        form.reset();
-
+       
+form.reset();
     });
 }
 arrObj()
@@ -54,13 +54,25 @@ function addBookToLibrary(tv, av, pv,re) {
     myLibrary.push(newBook);
     console.log(myLibrary);
     var card = document.createElement("div");
+    card.className = "card";
     card.innerHTML = `<div>
-    <p><span>title:${tv}</span>
-    <span>author:${av}</span>
-    <span>pgno:${pv}</span>
-    <span>result:${re}</span></p>
-    </div>`
+    <p><span>Title: ${tv}</span><br>
+    <span>Author: ${av}</span><br>
+    <span>Total Pages: ${pv}</span><br>
+    <span>Status: ${re}</span></p>
+    </div>
+    <button>Remove</button>`
     cards.appendChild(card);
+    const remove = card.querySelector("button");
+    removeBtn(remove);
+    
+}
+
+function removeBtn(cancel){
+  
+    cancel.addEventListener("click",(e) => {
+        e.target.parentElement.remove();
+    })
 }
 
 
